@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>November Homestay Điện Biên Phủ</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Cabin -->
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Dancing Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Lexend Deca -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #7d5330;
+            --secondary-color: #dda853;
+            --background-light: #f8f7da;
+            --background-white: #ffffff;
+            --text-color: #7d5330;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cabin', sans-serif;
+            padding-top: 80px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: white;
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand img {
+            height: 60px;
+            width: auto;
+        }
+
+        .navbar-nav .nav-link {
+            color: #dda853 !important;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem !important;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #7d5330 !important;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #dda853;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #7d5330 !important;
+            font-weight: 600;
+        }
+
+        .navbar-nav .nav-link.active::after {
+            width: 80%;
+        }
+
+        .navbar-toggler {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none !important;
+        }
+
+        /* Dropdown Menu Styles */
+        .navbar-nav .dropdown-menu {
+            background-color: white;
+            border: none;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar-nav .dropdown-item {
+            color: #dda853;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .dropdown-item:hover {
+            background-color: #f5e1c0;
+            color: #7d5330;
+            transform: translateX(5px);
+        }
+
+        .navbar-nav .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+        }
+
+        .navbar-nav .dropdown-toggle::after {
+            display: none;
+        }
+
+        /* Rooms Section */
+        .rooms-section {
+            background: linear-gradient(135deg, #f8f7da 0%, #ffffff 100%);
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Cabin', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #7d5330;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #7d5330;
+            opacity: 0.8;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(125, 83, 48, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            height: 240px;
+            cursor: pointer;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(125, 83, 48, 0.15);
+        }
+
+        .room-image {
+            position: relative;
+            overflow: hidden;
+            width: 180px;
+            flex-shrink: 0;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.05);
+        }
+
+        .room-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .room-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #7d5330;
+            margin-bottom: 10px;
+        }
+
+        .room-description {
+            color: #7d5330;
+            opacity: 0.8;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .room-features {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #7d5330;
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            font-size: 1rem;
+            color: #dda853;
+        }
+
+        .room-price {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #7d5330;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .btn-v {
+            background: #7d5330;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1;
+        }
+
+        .btn-v:hover {
+            background: #dda853;
+            transform: scale(1.1);
+        }
+
+        .btn-detail {
+            background-color: #dda853;
+            color: white;
+            border: none;
+            padding: 10px 45px;
+            font-size: 1.1rem;
+            font-family: 'Cabin', sans-serif;
+            font-weight: 600;
+            border-radius: 12px;
+            text-transform: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(221, 168, 83, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .btn-detail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-detail:hover::before {
+            left: 100%;
+        }
+
+        .btn-detail:hover {
+            background-color: #c9964a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(221, 168, 83, 0.5);
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background: #f5f5dc;
+            padding: 120px 0 30px 0;
+            color: #7d5330;
+            position: relative;
+        }
+
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.3;
+        }
+
+        .footer-title {
+            font-family: 'Dexend Deca', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #dda853;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #dda853;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-text {
+            font-family: 'Cabin', sans-serif;
+            font-size: 1.1rem;
+            color: #7d5330;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item:hover .contact-icon {
+            color: #7d5330;
+            transform: scale(1.2);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(221, 168, 83, 0.2);
+            border: 2px solid #dda853;
+            border-radius: 50%;
+            color: #dda853;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #dda853;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-icon:hover::before {
+            left: 0;
+        }
+
+        .social-icon:hover {
+            color: white;
+            border-color: #c9964a;
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(221, 168, 83, 0.4);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(221, 168, 83, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-bottom p {
+            color: #7d5330;
+            font-size: 0.9rem;
+            margin: 0;
+            opacity: 0.8;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        /* Styles for bottom sheet modal */
+        .modal.fade {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .modal.fade .modal-dialog-bottom {
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .modal.show {
+            opacity: 1;
+        }
+
+        .modal-content {
+            will-change: transform;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            border: none;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+            color: var(--text-color);
+            touch-action: pan-y;
+        }
+
+        .modal.show .modal-dialog-bottom {
+            transform: translateY(0);
+        }
+
+        .modal-dialog-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 90vh;
+        }
+        
+        @media (min-width: 576px) {
+          .modal-dialog-bottom {
+            max-width: 550px;
+          }
+        }
+        
+        .modal-handle {
+            padding: 12px;
+            cursor: grab;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .handle-bar {
+            width: 40px;
+            height: 5px;
+            background-color: #dcdcdc;
+            border-radius: 2.5px;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            padding: 0 1.5rem 0.5rem;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            background-color: var(--background-white);
+            padding-top: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .modal-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .modal-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 2rem 2rem;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .modal-body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .details-section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .overview-item, .service-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .overview-item i, .service-list li i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 15px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        /* New styles for horizontal scrolling image list */
+        .image-scroll-container {
+            margin-bottom: 20px;
+            position: relative;
+            cursor: grab;
+            user-select: none;
+            overflow-x: scroll;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .image-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .image-scroll-container:active {
+            cursor: grabbing;
+        }
+
+        .image-list {
+            display: flex;
+            gap: 10px;
+            padding: 0 0px;
+            list-style: none;
+            width: max-content;
+        }
+
+        .image-list li {
+            flex: 0 0 auto;
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .image-list img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Price Section Styles */
+        .price-section {
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .price-item span:first-child {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .price-item span:last-child {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 10px;
+            padding-left: 5px;
+            font-style: italic;
+        }
+
+        .price-note i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+
+        /* Image Viewer Modal styles */
+        #imageViewerModal .modal-content {
+            border-radius: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        #imageViewerModal .modal-dialog {
+            max-width: 100vw;
+            margin: 0;
+            height: 100vh;
+        }
+        #imageViewerModal .modal-header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            background-color: transparent;
+            z-index: 1050;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: none;
+        }
+
+        #imageViewerModal .modal-body {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #imageViewerModal #enlargedImage {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        #imageViewerModal .btn-close {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 8px;
+            opacity: 1;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        #imageViewerModal .btn-close:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        #imageViewerModal .btn-close:focus {
+            box-shadow: none;
+            outline: 2px solid rgba(255, 255, 255, 0.6);
+            outline-offset: 2px;
+        }
+
+        /* Styles for image navigation arrows inside viewer modal */
+        #imageViewerModal .image-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            z-index: 1040;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        #imageViewerModal .image-nav-arrow:hover {
+            background-color: rgba(255, 255, 255, 1);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        #imageViewerModal .image-nav-arrow.left {
+            left: 20px;
+        }
+
+        #imageViewerModal .image-nav-arrow.right {
+            right: 20px;
+        }
+
+        /* Adjustments for modal body for small screens */
+        @media (max-width: 575.98px) {
+            .modal-header {
+                padding-top: 1rem;
+            }
+            .modal-body {
+                padding-top: 0.5rem;
+            }
+            .image-list li {
+                width: 120px;
+                height: 160px;
+            }
+            .image-scroll-container {
+                height: 250px;
+            }
+            /* Image Viewer Modal for small screens */
+            #imageViewerModal .image-nav-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            #imageViewerModal .image-nav-arrow.left {
+                left: 5px;
+            }
+            
+            #imageViewerModal .image-nav-arrow.right {
+                right: 5px;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .navbar {
+                padding: 0.3rem 0;
+            }
+
+            .navbar-brand img {
+                height: 50px;
+            }
+
+            .navbar-nav .nav-link {
+                padding: 0.5rem 1rem !important;
+                font-size: 1.1rem;
+            }
+
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                margin-top: 10px;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Mobile Dropdown Styles */
+            .navbar-nav .dropdown-menu {
+                background-color: #f8f7da;
+                border: none;
+                box-shadow: none;
+                margin-left: 15px;
+                margin-top: 5px;
+                border-radius: 8px;
+            }
+
+            .navbar-nav .dropdown-item {
+                font-size: 1rem;
+                padding: 8px 15px;
+            }
+
+            .navbar-nav .dropdown-item:hover {
+                background-color: rgba(221, 168, 83, 0.1);
+                transform: none;
+            }
+
+            .rooms-section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Keep horizontal layout on mobile */
+            .room-card {
+                height: 180px;
+                flex-direction: row;
+            }
+
+            .room-image {
+                width: 135px;
+            }
+
+            .room-content {
+                padding: 15px;
+            }
+
+            .room-features {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+
+            .room-price {
+                font-size: 1rem;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .btn-v {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+                top: 15px;
+                right: 15px;
+            }
+
+            .room-title {
+                font-size: 1.3rem;
+                margin-bottom: 8px;
+            }
+
+            .room-description {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+
+            /* Footer mobile responsive */
+            .footer-section {
+                padding: 40px 0 20px 0;
+            }
+
+            .footer-title {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .contact-item {
+                margin-bottom: 15px;
+            }
+
+            .contact-icon {
+                font-size: 1.3rem;
+                margin-right: 12px;
+            }
+
+            .contact-text {
+                font-size: 1rem;
+            }
+
+            .social-icons {
+                gap: 15px;
+                margin-top: 25px;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .footer-bottom {
+                margin-top: 30px;
+            }
+
+            #imageViewerModal .image-nav-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+        #imageViewerModal .image-nav-arrow.left {
+            left: 10px;
+        }
+        
+        #imageViewerModal .image-nav-arrow.right {
+            right: 10px;
+        }
+        
+        #imageViewerModal .modal-header {
+            padding: 10px 15px;
+        }
+        
+        #imageViewerModal .btn-close {
+            padding: 6px;
+            font-size: 1rem;
+        }
+    }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Enhanced navbar on scroll */
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../html/trangchu.html">
+                <img src="../img/logo.jpg" alt="November Homestay Logo">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/trangchu.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Thông tin <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <li><a class="dropdown-item" href="../html/howtobook.html">Cách book phòng</a></li>
+                            <li><a class="dropdown-item" href="../html/chinhsach.html">Chính sách hoàn hủy</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#Chinhanh" id="chinhanhDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Chi nhánh <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="chinhanhDropdown">
+                            <li><a class="dropdown-item" href="../html/dbp.html">Điện Biên Phủ</a></li>
+                            <li><a class="dropdown-item" href="../html/hs.html">Hoàng Sa</a></li>
+                            <li><a class="dropdown-item" href="../html/tkd.html">Trần Khánh Dư</a></li>
+                            <li><a class="dropdown-item" href="../html/pn.html">Phú Nhuận</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer-section">Liên hệ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Rooms Section for Dien Bien Phu -->
+    <section class="rooms-section" id="rooms-dienbienphu">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">NOVEMBER HOMESTAY ĐIỆN BIÊN PHỦ</h2>
+                <p class="section-subtitle">
+                    <i class="fas fa-map-marker-alt"></i> 119/7A Điện Biên Phủ, Đa Kao, Quận 1
+                </p>
+                <a href="#" class="btn-detail mt-3" data-bs-toggle="modal" data-bs-target="#dienbienphuDetailsModal">Xem chi tiết</a>
+            </div>
+
+            <div class="row">
+                <!-- Room DBP201 -->
+                <div class="col-12 mb-4">
+                    <div class="room-card" data-bs-toggle="modal" data-bs-target="#DBP201Modal">
+                        <div class="room-image">
+                            <img src="../img/dbp/dbp201/dbp201(1).jpg" alt="Phòng DBP201">
+                        </div>
+                        <div class="room-content">
+                            <div>
+                                <h3 class="room-title">Phòng 201</h3>
+                                <p class="room-description">1 giường đôi, bếp, ban công, cửa sổ</p>
+                                <div class="room-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-expand-arrows-alt feature-icon"></i>
+                                        <span>20m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-v">&gt;</button>
+                            <div class="room-price">370.000 - 600.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room DBP202 -->
+                <div class="col-12 mb-4">
+                    <div class="room-card" data-bs-toggle="modal" data-bs-target="#DBP202Modal">
+                        <div class="room-image">
+                            <img src="../img/dbp/dbp202/dbp202(1).jpg" alt="Phòng DBP202">
+                        </div>
+                        <div class="room-content">
+                            <div>
+                                <h3 class="room-title">Phòng 202</h3>
+                                <p class="room-description">1 giường đôi, bếp, cửa sổ</p>
+                                <div class="room-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-expand-arrows-alt feature-icon"></i>
+                                        <span>18m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-v">&gt;</button>
+                            <div class="room-price">350.000 - 580.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room DBP301 -->
+                <div class="col-12 mb-4">
+                    <div class="room-card" data-bs-toggle="modal" data-bs-target="#DBP301Modal">
+                        <div class="room-image">
+                            <img src="../img/dbp/dbp301/dbp301(1).jpg" alt="Phòng DBP301">
+                        </div>
+                        <div class="room-content">
+                            <div>
+                                <h3 class="room-title">Phòng 301</h3>
+                                <p class="room-description">1 giường đôi, bếp, ban công, cửa sổ</p>
+                                <div class="room-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-expand-arrows-alt feature-icon"></i>
+                                        <span>20m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-v">&gt;</button>
+                            <div class="room-price">370.000 - 600.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room DBP302 -->
+                <div class="col-12 mb-4">
+                    <div class="room-card" data-bs-toggle="modal" data-bs-target="#DBP302Modal">
+                        <div class="room-image">
+                            <img src="../img/dbp/dbp302/dbp302(1).jpg" alt="Phòng DBP302">
+                        </div>
+                        <div class="room-content">
+                            <div>
+                                <h3 class="room-title">Phòng 302</h3>
+                                <p class="room-description">1 giường đôi, bếp, cửa sổ</p>
+                                <div class="room-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-expand-arrows-alt feature-icon"></i>
+                                        <span>18m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-v">&gt;</button>
+                            <div class="room-price">350.000 - 580.000 VND</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- HTML for the main branch details modal for Dien Bien Phu -->
+    <div class="modal fade" id="dienbienphuDetailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom">
+            <div class="modal-content">
+                <!-- Handle for dragging -->
+                <div class="modal-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="detailsModalLabel">NOVEMBER HOMESTAY ĐIỆN BIÊN PHỦ</h5>
+                        <p class="modal-subtitle">Phòng: 5 Tầng: 4</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h6 class="details-section-title">Tổng quan</h6>
+                    <div class="overview-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>119/7A Điện Biên Phủ, Đa Kao, Quận 1</span>
+                    </div>
+                    <div class="overview-item">
+                         <i class="fas fa-info-circle"></i>
+                         <span>Nằm trên con đường trung tâm Quận 1, phong cách hiện đại, ấm cúng, không gian xanh, yên tĩnh, không khí trong lành, mát mẻ.
+                         Di chuyển đến các khu vực lân cận ngay trung tâm rất thuận tiện như Nhà thờ Tân Định, Nhà thờ Đức Bà, phố Hai Bà Trưng,..</span>
+                    </div>
+
+                    <h6 class="details-section-title mt-4">Dịch vụ và cơ sở vật chất</h6>
+                    <ul class="service-list">
+                        <li><i class="far fa-check-circle"></i> Check-in, check-out tự động</li>
+                        <li><i class="far fa-check-circle"></i> Dịch vụ dọn phòng</li>
+                        <li><i class="far fa-check-circle"></i> Thang bộ</li>
+                        <li><i class="far fa-check-circle"></i> Bình chữa cháy</li>
+                        <li><i class="far fa-check-circle"></i> Bãi giữ xe máy</li>
+                        <li><i class="far fa-check-circle"></i> Wifi miễn phí</li>
+                        <li><i class="far fa-check-circle"></i> Máy giặt</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML for DBP201 room modal -->
+    <div class="modal fade" id="DBP201Modal" tabindex="-1" aria-labelledby="DBP201ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom">
+            <div class="modal-content">
+                <!-- Handle for dragging -->
+                <div class="modal-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="DBP201ModalLabel">Phòng 201</h5>
+                        <p class="modal-subtitle">Tầng: 2</p>
+                    </div>
+                </div>
+
+                <!-- Horizontal scroll image list -->
+                <div class="image-scroll-container">
+                    <ul class="image-list" id="dbp201-image-list">
+                        <li><img src="../img/dbp/dbp201/dbp201(1).jpg" alt="Phòng DBP201 - Ảnh 1"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(2).jpg" alt="Phòng DBP201 - Ảnh 2"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(3).jpg" alt="Phòng DBP201 - Ảnh 3"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(4).jpg" alt="Phòng DBP201 - Ảnh 4"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(5).jpg" alt="Phòng DBP201 - Ảnh 5"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(6).jpg" alt="Phòng DBP201 - Ảnh 6"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(7).jpg" alt="Phòng DBP201 - Ảnh 7"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(8).jpg" alt="Phòng DBP201 - Ảnh 8"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(9).jpg" alt="Phòng DBP201 - Ảnh 9"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(10).png" alt="Phòng DBP201 - Ảnh 10"></li>
+                        <li><img src="../img/dbp/dbp201/dbp201(11).png" alt="Phòng DBP201 - Ảnh 11"></li>                    </ul>
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="details-section-title">Tổng quan</h6>
+                    <div class="overview-item">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span>Diện tích: 20m²</span>
+                    </div>
+                    <div class="overview-item">
+                         <i class="fas fa-bed"></i>
+                         <span>1 giường đôi</span>
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-home"></i>
+                        <span>Bếp, ban công, cửa sổ</span>
+                    </div>
+
+                    <div class="price-section">
+                        <h6 class="details-section-title">Giá theo giờ</h6>
+                        <div class="price-item">
+                            <span>10h-14h</span>
+                            <span>370.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>16h-20h</span>
+                            <span>370.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>21h-9h (ngày hôm sau)</span>
+                            <span>550.000 VND</span>
+                        </div>
+                        <h6 class="details-section-title mt-4">Giá theo ngày</h6>
+                        <div class="price-item">
+                            <span>14h-12h (ngày hôm sau)</span>
+                            <span>600.000 VND</span>
+                        </div>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Extra: 50.000VNĐ / 1 tiếng</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Phụ thu lễ, Tết: 10%</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Khung giờ có thể thay đổi tuỳ theo tình trạng phòng trống</p>
+                    </div>
+
+                    <h6 class="details-section-title mt-4">Tiện ích phòng</h6>
+                    <ul class="service-list">
+                        <li><i class="far fa-check-circle"></i> Không hút thuốc</li>
+                        <li><i class="far fa-check-circle"></i> Bếp và dụng cụ nấu ăn cơ bản</li>
+                        <li><i class="far fa-check-circle"></i> Máy chiếu có Netflix</li>
+                        <li><i class="far fa-check-circle"></i> Máy lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Tủ lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Ấm đun nước</li>
+                        <li><i class="far fa-check-circle"></i> Giá treo</li>
+                        <li><i class="far fa-check-circle"></i> Máy sấy tóc</li>
+                        <li><i class="far fa-check-circle"></i> Khăn tắm</li>
+                        <li><i class="far fa-check-circle"></i> Bàn chải, kem đánh răng, lược</li>
+                        <li><i class="far fa-check-circle"></i> WC riêng</li>
+                        <li><i class="far fa-check-circle"></i> Không gian yên tĩnh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML for DBP202 room modal -->
+    <div class="modal fade" id="DBP202Modal" tabindex="-1" aria-labelledby="DBP202ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom">
+            <div class="modal-content">
+                <div class="modal-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="DBP202ModalLabel">Phòng 202</h5>
+                        <p class="modal-subtitle">Tầng: 2</p>
+                    </div>
+                </div>
+
+                <div class="image-scroll-container">
+                    <ul class="image-list" id="dbp202-image-list">
+                        <li><img src="../img/dbp/dbp202/dbp202(1).jpg" alt="Phòng DBP202 - Ảnh 1"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(2).jpg" alt="Phòng DBP202 - Ảnh 2"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(3).jpg" alt="Phòng DBP202 - Ảnh 3"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(4).jpg" alt="Phòng DBP202 - Ảnh 4"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(5).jpg" alt="Phòng DBP202 - Ảnh 5"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(6).jpg" alt="Phòng DBP202 - Ảnh 6"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(7).jpg" alt="Phòng DBP202 - Ảnh 7"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(8).jpg" alt="Phòng DBP202 - Ảnh 8"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(9).jpg" alt="Phòng DBP202 - Ảnh 9"></li>
+                        <li><img src="../img/dbp/dbp202/dbp202(10).jpg" alt="Phòng DBP202 - Ảnh 10"></li>
+                    </ul>
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="details-section-title">Tổng quan</h6>
+                    <div class="overview-item">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span>Diện tích: 18m²</span>
+                    </div>
+                    <div class="overview-item">
+                         <i class="fas fa-bed"></i>
+                         <span>1 giường đôi</span>
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-home"></i>
+                        <span>Bếp, cửa sổ</span>
+                    </div>
+
+                    <div class="price-section">
+                        <h6 class="details-section-title">Giá theo giờ</h6>
+                        <div class="price-item">
+                            <span>10h-14h</span>
+                            <span>350.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>16h-20h</span>
+                            <span>350.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>21h-9h (ngày hôm sau)</span>
+                            <span>500.000 VND</span>
+                        </div>
+                        <h6 class="details-section-title mt-4">Giá theo ngày</h6>
+                        <div class="price-item">
+                            <span>14h-12h (ngày hôm sau)</span>
+                            <span>580.000 VND</span>
+                        </div>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Extra: 50.000VNĐ / 1 tiếng</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Phụ thu lễ, Tết: 10%</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Khung giờ có thể thay đổi tuỳ theo tình trạng phòng trống</p>
+                    </div>
+
+                    <h6 class="details-section-title mt-4">Tiện ích phòng</h6>
+                    <ul class="service-list">
+                        <li><i class="far fa-check-circle"></i> Không hút thuốc</li>
+                        <li><i class="far fa-check-circle"></i> Bếp và dụng cụ nấu ăn cơ bản</li>
+                        <li><i class="far fa-check-circle"></i> Máy chiếu có Netflix</li>
+                        <li><i class="far fa-check-circle"></i> Máy lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Tủ lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Ấm đun nước</li>
+                        <li><i class="far fa-check-circle"></i> Giá treo</li>
+                        <li><i class="far fa-check-circle"></i> Máy sấy tóc</li>
+                        <li><i class="far fa-check-circle"></i> Khăn tắm</li>
+                        <li><i class="far fa-check-circle"></i> Bàn chải, kem đánh răng, lược</li>
+                        <li><i class="far fa-check-circle"></i> WC riêng</li>
+                        <li><i class="far fa-check-circle"></i> Không gian yên tĩnh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML for DBP301 room modal -->
+    <div class="modal fade" id="DBP301Modal" tabindex="-1" aria-labelledby="DBP301ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom">
+            <div class="modal-content">
+                <div class="modal-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="DBP301ModalLabel">Phòng 301</h5>
+                        <p class="modal-subtitle">Tầng: 3</p>
+                    </div>
+                </div>
+
+                <div class="image-scroll-container">
+                    <ul class="image-list" id="dbp301-image-list">
+                        <li><img src="../img/dbp/dbp301/dbp301(1).jpg" alt="Phòng DBP301 - Ảnh 1"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(2).jpg" alt="Phòng DBP301 - Ảnh 2"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(3).jpg" alt="Phòng DBP301 - Ảnh 3"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(4).jpg" alt="Phòng DBP301 - Ảnh 4"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(5).jpg" alt="Phòng DBP301 - Ảnh 5"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(6).jpg" alt="Phòng DBP301 - Ảnh 6"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(7).jpg" alt="Phòng DBP301 - Ảnh 7"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(8).jpg" alt="Phòng DBP301 - Ảnh 8"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(9).png" alt="Phòng DBP301 - Ảnh 9"></li>
+                        <li><img src="../img/dbp/dbp301/dbp301(10).png" alt="Phòng DBP301 - Ảnh 10"></li>
+                    </ul>
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="details-section-title">Tổng quan</h6>
+                    <div class="overview-item">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span>Diện tích: 20m²</span>
+                    </div>
+                    <div class="overview-item">
+                         <i class="fas fa-bed"></i>
+                         <span>1 giường đôi</span>
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-home"></i>
+                        <span>Bếp, ban công, cửa sổ</span>
+                    </div>
+
+                    <div class="price-section">
+                        <h6 class="details-section-title">Giá theo giờ</h6>
+                        <div class="price-item">
+                            <span>10h-14h</span>
+                            <span>370.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>16h-20h</span>
+                            <span>370.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>21h-9h (ngày hôm sau)</span>
+                            <span>550.000 VND</span>
+                        </div>
+                        <h6 class="details-section-title mt-4">Giá theo ngày</h6>
+                        <div class="price-item">
+                            <span>14h-12h (ngày hôm sau)</span>
+                            <span>600.000 VND</span>
+                        </div>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Extra: 50.000VNĐ / 1 tiếng</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Phụ thu lễ, Tết: 10%</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Khung giờ có thể thay đổi tuỳ theo tình trạng phòng trống</p>
+                    </div>
+
+                    <h6 class="details-section-title mt-4">Tiện ích phòng</h6>
+                    <ul class="service-list">
+                        <li><i class="far fa-check-circle"></i> Không hút thuốc</li>
+                        <li><i class="far fa-check-circle"></i> Bếp và dụng cụ nấu ăn cơ bản</li>
+                        <li><i class="far fa-check-circle"></i> Máy chiếu có Netflix</li>
+                        <li><i class="far fa-check-circle"></i> Máy lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Tủ lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Ấm đun nước</li>
+                        <li><i class="far fa-check-circle"></i> Giá treo</li>
+                        <li><i class="far fa-check-circle"></i> Máy sấy tóc</li>
+                        <li><i class="far fa-check-circle"></i> Khăn tắm</li>
+                        <li><i class="far fa-check-circle"></i> Bàn chải, kem đánh răng, lược</li>
+                        <li><i class="far fa-check-circle"></i> WC riêng</li>
+                        <li><i class="far fa-check-circle"></i> Không gian yên tĩnh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HTML for DBP302 room modal -->
+    <div class="modal fade" id="DBP302Modal" tabindex="-1" aria-labelledby="DBP302ModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-bottom">
+            <div class="modal-content">
+                <div class="modal-handle">
+                    <div class="handle-bar"></div>
+                </div>
+                
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title" id="DBP302ModalLabel">Phòng 302</h5>
+                        <p class="modal-subtitle">Tầng: 3</p>
+                    </div>
+                </div>
+
+                <div class="image-scroll-container">
+                    <ul class="image-list" id="dbp302-image-list">
+                        <li><img src="../img/dbp/dbp302/dbp302(1).jpg" alt="Phòng DBP302 - Ảnh 1"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(2).jpg" alt="Phòng DBP302 - Ảnh 2"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(3).jpg" alt="Phòng DBP302 - Ảnh 3"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(4).jpg" alt="Phòng DBP302 - Ảnh 4"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(5).jpg" alt="Phòng DBP302 - Ảnh 5"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(6).jpg" alt="Phòng DBP302 - Ảnh 6"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(7).jpg" alt="Phòng DBP302 - Ảnh 7"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(8).jpg" alt="Phòng DBP302 - Ảnh 8"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(9).jpg" alt="Phòng DBP302 - Ảnh 9"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(10).jpg" alt="Phòng DBP302 - Ảnh 10"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(11).jpg" alt="Phòng DBP302 - Ảnh 11"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(12).jpg" alt="Phòng DBP302 - Ảnh 12"></li>
+                        <li><img src="../img/dbp/dbp302/dbp302(13).jpg" alt="Phòng DBP302 - Ảnh 13"></li>
+                    </ul>
+                </div>
+
+                <div class="modal-body">
+                    <h6 class="details-section-title">Tổng quan</h6>
+                    <div class="overview-item">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                        <span>Diện tích: 15m²</span>
+                    </div>
+                    <div class="overview-item">
+                         <i class="fas fa-bed"></i>
+                         <span>1 giường đôi</span>
+                    </div>
+                    <div class="overview-item">
+                        <i class="fas fa-home"></i>
+                        <span>Bếp, cửa sổ</span>
+                    </div>
+
+                    <div class="price-section">
+                        <h6 class="details-section-title">Giá theo giờ</h6>
+                        <div class="price-item">
+                            <span>10h-14h</span>
+                            <span>350.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>16h-20h</span>
+                            <span>350.000 VND</span>
+                        </div>
+                        <div class="price-item">
+                            <span>21h-9h (ngày hôm sau)</span>
+                            <span>500.000 VND</span>
+                        </div>
+                        <h6 class="details-section-title mt-4">Giá theo ngày</h6>
+                        <div class="price-item">
+                            <span>14h-12h (ngày hôm sau)</span>
+                            <span>580.000 VND</span>
+                        </div>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Extra: 50.000VNĐ / 1 tiếng</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Phụ thu lễ, Tết: 10%</p>
+                        <p class="price-note"><i class="fas fa-asterisk"></i> Khung giờ có thể thay đổi tuỳ theo tình trạng phòng trống</p>
+                    </div>
+
+                    <h6 class="details-section-title mt-4">Tiện ích phòng</h6>
+                    <ul class="service-list">
+                        <li><i class="far fa-check-circle"></i> Không hút thuốc</li>
+                        <li><i class="far fa-check-circle"></i> Bếp và dụng cụ nấu ăn cơ bản</li>
+                        <li><i class="far fa-check-circle"></i> Máy chiếu có Netflix</li>
+                        <li><i class="far fa-check-circle"></i> Máy lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Tủ lạnh</li>
+                        <li><i class="far fa-check-circle"></i> Ấm đun nước</li>
+                        <li><i class="far fa-check-circle"></i> Giá treo</li>
+                        <li><i class="far fa-check-circle"></i> Máy sấy tóc</li>
+                        <li><i class="far fa-check-circle"></i> Khăn tắm</li>
+                        <li><i class="far fa-check-circle"></i> Bàn chải, kem đánh răng, lược</li>
+                        <li><i class="far fa-check-circle"></i> WC riêng</li>
+                        <li><i class="far fa-check-circle"></i> Không gian yên tĩnh</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer-section" class="footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="footer-title">Thông tin liên hệ</h2>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <p class="contact-text">nov.housecontact@gmail.com</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <p class="contact-text">(+84) 703 27 7997</p>
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/people/November-Homestay/61571732833395/" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nov.housesg/" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nov.housesg?is_from_webapp=1&sender_device=pc" target="_blank" class="social-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.airbnb.com.vn/users/show/399793828" target="_blank" class="social-icon">
+                            <i class="fab fa-airbnb"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p>&copy; 2024 November Homestay. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Viewer Modal -->
+    <div class="modal fade" id="imageViewerModal" tabindex="-1" aria-labelledby="imageViewerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Close button -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="enlargedImage" src="" alt="Ảnh phòng phóng to">
+                    <!-- Image navigation buttons -->
+                    <button class="image-nav-arrow left" aria-label="Ảnh trước">&#10094;</button>
+                    <button class="image-nav-arrow right" aria-label="Ảnh tiếp theo">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables for image viewer state
+        let currentImageViewerImages = [];
+        let currentImageViewerIndex = 0;
+        let imageViewerModalInstance; // To store Bootstrap modal instance
+
+        // Function to show a specific image in the viewer
+        const showEnlargedImage = (index) => {
+            if (currentImageViewerImages.length === 0) return;
+
+            // Handle index wrapping for circular navigation
+            if (index < 0) {
+                currentImageViewerIndex = currentImageViewerImages.length - 1;
+            } else if (index >= currentImageViewerImages.length) {
+                currentImageViewerIndex = 0;
+            } else {
+                currentImageViewerIndex = index;
+            }
+
+            const enlargedImageEl = document.getElementById('enlargedImage');
+            enlargedImageEl.src = currentImageViewerImages[currentImageViewerIndex];
+        };
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                // If it's a modal toggle, let Bootstrap handle it and skip smooth scrolling.
+                if (this.hasAttribute('data-bs-toggle') && this.getAttribute('data-bs-toggle') === 'modal') {
+                    return;
+                }
+
+                // If the href is just '#' or empty, prevent default to avoid page jump, then return.
+                if (href === '#' || href === '') {
+                    e.preventDefault();
+                    return;
+                }
+
+                // For valid hash links pointing to an ID, perform smooth scroll
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault(); // Only prevent default for actual scroll targets
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu auto-close on link click (except dropdown toggles)
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', () => {
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
+                });
+            }
+        });
+
+        // Handle dropdown clicks for mobile
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bsCollapse.hide();
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize image viewer modal instance once
+            imageViewerModalInstance = new bootstrap.Modal(document.getElementById('imageViewerModal'));
+
+            // Event listeners for image viewer navigation arrows
+            const leftArrow = document.querySelector('#imageViewerModal .image-nav-arrow.left');
+            const rightArrow = document.querySelector('#imageViewerModal .image-nav-arrow.right');
+            const closeButton = document.querySelector('#imageViewerModal .btn-close');
+
+            if (leftArrow) {
+                leftArrow.addEventListener('click', () => {
+                    showEnlargedImage(currentImageViewerIndex - 1);
+                });
+            }
+
+            if (rightArrow) {
+                rightArrow.addEventListener('click', () => {
+                    showEnlargedImage(currentImageViewerIndex + 1);
+                });
+            }
+
+            // Fix for closing the image viewer modal
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    imageViewerModalInstance.hide();
+                });
+            }
+
+            // Get all modals with 'modal-dialog-bottom' class
+            document.querySelectorAll('.modal.fade').forEach(currentModalEl => {
+                const modalId = currentModalEl.id;
+                if (!modalId) return;
+
+                const modal = new bootstrap.Modal(currentModalEl);
+                const modalContent = currentModalEl.querySelector('.modal-content');
+                const modalHandle = currentModalEl.querySelector('.modal-handle');
+                const modalHeader = currentModalEl.querySelector('.modal-header');
+
+                let startY = 0;
+                let currentY = 0;
+                let isDraggingModal = false;
+
+                // Function to start dragging modal
+                const dragStartModal = (y) => {
+                    startY = y;
+                    isDraggingModal = true;
+                    modalContent.style.transition = 'none';
+                    document.body.style.userSelect = 'none';
+                };
+
+                // Function to move modal during drag
+                const dragMoveModal = (y) => {
+                    if (!isDraggingModal) return;
+                    
+                    currentY = y;
+                    const diffY = currentY - startY;
+
+                    // Only allow dragging down (positive transform Y)
+                    if (diffY >= 0) {
+                        modalContent.style.transform = `translateY(${diffY}px)`;
+                    } else {
+                        // Prevent dragging up past limit
+                        modalContent.style.transform = `translateY(0px)`;
+                    }
+                };
+
+                // Function to end modal dragging
+                const dragEndModal = () => {
+                    if (!isDraggingModal) return;
+                    
+                    isDraggingModal = false;
+                    modalContent.style.transition = 'transform 0.4s ease-out';
+                    document.body.style.userSelect = '';
+                    
+                    const diffY = currentY - startY;
+
+                    // If dragged down far enough (e.g., > 100px), close modal
+                    if (diffY > 100) {
+                        modal.hide();
+                    } else {
+                        // Otherwise, return modal to initial position
+                        modalContent.style.transform = 'translateY(0)';
+                    }
+                    
+                    // Reset Y values
+                    startY = 0;
+                    currentY = 0;
+                };
+
+                // Event Handlers for modal dragging (Mouse)
+                const onMouseDownModal = (e) => {
+                    // Only start dragging modal if clicking on handle or header
+                    if ((e.target.closest('.modal-handle') || e.target.closest('.modal-header')) &&
+                        !e.target.closest('.image-scroll-container')) {
+                        e.preventDefault();
+                        dragStartModal(e.clientY);
+                        document.addEventListener('mousemove', onMouseMoveModal);
+                        document.addEventListener('mouseup', onMouseUpModal);
+                    }
+                };
+                const onMouseMoveModal = (e) => {
+                    if (isDraggingModal) {
+                        dragMoveModal(e.clientY);
+                    }
+                };
+                const onMouseUpModal = () => {
+                    dragEndModal();
+                    document.removeEventListener('mousemove', onMouseMoveModal);
+                    document.removeEventListener('mouseup', onMouseUpModal);
+                };
+
+                // Event Handlers for modal dragging (Touch)
+                const onTouchStartModal = (e) => {
+                    // Only start dragging modal if touching on handle or header
+                    if ((e.target.closest('.modal-handle') || e.target.closest('.modal-header')) &&
+                        !e.target.closest('.image-scroll-container')) {
+                         dragStartModal(e.touches[0].clientY);
+                    }
+                };
+                const onTouchMoveModal = (e) => {
+                    const newY = e.touches[0].clientY;
+                    // Prevent page scrolling when dragging modal down
+                    if(isDraggingModal && newY > startY){
+                        e.preventDefault(); 
+                    }
+                    if (isDraggingModal) {
+                        dragMoveModal(newY);
+                    }
+                };
+                const onTouchEndModal = () => {
+                    dragEndModal();
+                };
+
+                // Attach Listeners for modal dragging
+                if (modalHandle) {
+                    modalHandle.addEventListener('mousedown', onMouseDownModal);
+                    modalHandle.addEventListener('touchstart', onTouchStartModal, { passive: false });
+                }
+                if (modalHeader) { 
+                    modalHeader.addEventListener('mousedown', onMouseDownModal);
+                    modalHeader.addEventListener('touchstart', onTouchStartModal, { passive: false });
+                }
+
+                modalContent.addEventListener('touchmove', onTouchMoveModal, { passive: false });
+                modalContent.addEventListener('touchend', onTouchEndModal);
+                
+                // Reset transform when modal is completely closed
+                currentModalEl.addEventListener('hidden.bs.modal', () => {
+                    modalContent.style.transform = '';
+                });
+
+                // Logic for horizontal image dragging and click to enlarge
+                const imageScrollContainer = currentModalEl.querySelector('.image-scroll-container');
+                if (imageScrollContainer) {
+                    const imageList = imageScrollContainer.querySelector('.image-list');
+                    const images = imageList.querySelectorAll('img');
+
+                    let isDownImageDrag = false;
+                    let startX_mouse_image;
+                    let scrollLeft_mouse_image;
+                    let startX_touch_image;
+                    let startY_touch_image;
+                    let scrollLeft_touch_image;
+                    let hasMoved = false;
+
+                    // Mouse events for image container
+                    imageScrollContainer.addEventListener('mousedown', (e) => {
+                        // Only start image drag if not clicking on modal's own drag areas
+                        if (e.target.closest('.modal-handle') || e.target.closest('.modal-header')) {
+                            return;
+                        }
+                        isDownImageDrag = true;
+                        imageScrollContainer.classList.add('active');
+                        startX_mouse_image = e.pageX - imageScrollContainer.offsetLeft;
+                        scrollLeft_mouse_image = imageScrollContainer.scrollLeft;
+                        hasMoved = false;
+                    });
+
+                    imageScrollContainer.addEventListener('mouseleave', () => {
+                        isDownImageDrag = false;
+                        imageScrollContainer.classList.remove('active');
+                    });
+
+                    imageScrollContainer.addEventListener('mouseup', (e) => {
+                        isDownImageDrag = false;
+                        imageScrollContainer.classList.remove('active');
+                        // If it was a drag, prevent click event from firing on the image
+                        if (hasMoved) {
+                            e.preventDefault();
+                        }
+                    });
+
+                    imageScrollContainer.addEventListener('mousemove', (e) => {
+                        if (!isDownImageDrag) return;
+                        e.preventDefault();
+                        const x = e.pageX - imageScrollContainer.offsetLeft;
+                        const walk = (x - startX_mouse_image) * 2;
+                        if (Math.abs(walk) > 5) {
+                            hasMoved = true;
+                        }
+                        imageScrollContainer.scrollLeft = scrollLeft_mouse_image - walk;
+                    });
+
+                    // Touch events for horizontal image scroll
+                    imageScrollContainer.addEventListener('touchstart', (e) => {
+                        // Only start image drag if not touching modal's own drag areas
+                        if (e.target.closest('.modal-handle') || e.target.closest('.modal-header')) {
+                            return;
+                        }
+                        isDownImageDrag = true;
+                        imageScrollContainer.classList.add('active');
+                        startX_touch_image = e.touches[0].pageX;
+                        startY_touch_image = e.touches[0].clientY;
+                        scrollLeft_touch_image = imageScrollContainer.scrollLeft;
+                        hasMoved = false;
+                    }, { passive: false });
+
+                    imageScrollContainer.addEventListener('touchend', () => {
+                        isDownImageDrag = false;
+                        imageScrollContainer.classList.remove('active');
+                    });
+
+                    imageScrollContainer.addEventListener('touchmove', (e) => {
+                        if (!isDownImageDrag) return;
+                        const currentX = e.touches[0].pageX;
+                        const currentY = e.touches[0].clientY;
+
+                        const diffX = currentX - startX_touch_image;
+                        const diffY = currentY - startY_touch_image;
+
+                        if (Math.abs(diffX) > 5 || Math.abs(diffY) > 5) {
+                            hasMoved = true;
+                        }
+
+                        // Determine if it's primarily a horizontal drag
+                        if (Math.abs(diffX) > Math.abs(diffY)) {
+                            e.preventDefault(); // Prevent vertical scrolling of the page/modal when horizontal dragging
+                            const walk = (currentX - startX_touch_image) * 2;
+                            imageScrollContainer.scrollLeft = scrollLeft_touch_image - walk;
+                        } else {
+                            // If it's primarily vertical, allow default scroll to happen (modal body)
+                        }
+                    }, { passive: false });
+
+                    // Click event for images to open viewer
+                    images.forEach((img, index) => {
+                        img.addEventListener('click', (e) => {
+                            // If it was a drag, prevent opening image viewer
+                            if (hasMoved) { 
+                                e.preventDefault();
+                                hasMoved = false;
+                                return;
+                            }
+                            
+                            // Get all images from the current imageList for the viewer
+                            currentImageViewerImages = [];
+                            imageList.querySelectorAll('img').forEach(listImg => {
+                                currentImageViewerImages.push(listImg.src);
+                            });
+
+                            // Set the current index to the clicked image's index
+                            currentImageViewerIndex = index;
+
+                            showEnlargedImage(currentImageViewerIndex);
+                            imageViewerModalInstance.show();
+                        });
+                    });
+                }
+
+                // Add event listener for the room-card's internal button
+                const btnV = currentModalEl.parentElement.querySelector('.btn-v');
+                if (btnV) {
+                    btnV.addEventListener('click', function(e) {
+                        e.stopPropagation(); // Prevent the click from bubbling up to the room-card
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
